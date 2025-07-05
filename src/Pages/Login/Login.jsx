@@ -10,7 +10,7 @@ export default function Login() {
             a id nisi.
           </p>
         </div>
-        <div className="w-full max-w-sm shadow-2xl card bg-base-100 shrink-0">
+        <form className="w-full max-w-sm shadow-2xl card bg-base-100 shrink-0">
           <div className="card-body">
             <fieldset className="fieldset">
               <label className="label">Email</label>
@@ -23,7 +23,7 @@ export default function Login() {
               <button className="mt-4 btn btn-neutral">Login</button>
             </fieldset>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );
