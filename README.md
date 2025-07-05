@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Job
+=======
+#Job
+>>>>>>> b41a31b127494783234cddbb0e0abcddb2ff0c9e
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
