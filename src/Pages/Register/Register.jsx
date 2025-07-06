@@ -12,7 +12,7 @@ export default function Register() {
     const email = form.email.value;
     const password = form.password.value;
     // password validation
-    const userUnfo={
+    const userUnfo={ 
       name, photo,  email, password
     }
     createUser(email,password)
@@ -30,7 +30,7 @@ export default function Register() {
           <Lottie animationData={registerLottieData}></Lottie>
         </div>
         <div className="w-full max-w-sm shadow-2xl card bg-base-100 shrink-0">
-          <h1 className="mt-4 ml-8 text-5xl font-bold">Login now!</h1>
+          <h1 className="mt-4 ml-8 text-5xl font-bold">Register now!</h1>
           <form onSubmit={handleRegister} className="card-body">
             <fieldset className="fieldset">
               <div>
@@ -69,7 +69,7 @@ export default function Register() {
                   name="password"
                 />
               </div>
-              <button className="mt-4 btn btn-neutral">Login</button>
+              <button className="mt-4 btn btn-neutral">Register</button>
             </fieldset>
           </form>
         </div>
