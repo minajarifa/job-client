@@ -61,8 +61,8 @@ export default function Navber() {
               tabIndex={0}
               className="p-2 mt-3 shadow menu menu-sm dropdown-content bg-base-100 rounded-box z-1 w-52"
             >
-             <Link className="mt-5 ml-5">Register</Link>
-             <Link className="mt-5 ml-5">Login</Link>
+             <Link to="/register" className="mt-5 ml-5">Register</Link>
+             <Link to="/login" className="mt-5 ml-5">Login</Link>
              <button>Logout</button>
             </ul>
           </div>
