@@ -1,6 +1,9 @@
 import Lottie from "lottie-react";
 import registerLottieData from "../../../public/registerLottie/lotte.json.json";
+import { useContext } from "react";
+import AuthContext from "../../Context/AuthContext/AuthContext";
 export default function Register() {
+  const {createUser} = useContext(AuthContext)
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -12,6 +15,13 @@ export default function Register() {
     const userUnfo={
       name, photo,  email, password
     }
+    createUser(email,password)
+    .then(result=>{
+      console.log(result.user)
+    })
+    .then(error=>{
+      console.log(error)
+    })
   };
   return (
     <div className="min-h-screen hero bg-base-200">
