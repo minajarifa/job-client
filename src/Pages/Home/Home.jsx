@@ -1,7 +1,10 @@
+import Banner from "../SharePage/Banner/Banner";
 
 
 export default function Home() {
   return (
-    <div>Home</div>
+    <div>
+      <Banner></Banner>
+    </div>
   )
 }

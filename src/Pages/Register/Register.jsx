@@ -2,6 +2,7 @@ import Lottie from "lottie-react";
 import registerLottieData from "../../../public/registerLottie/lotte.json.json";
 import { useContext } from "react";
 import AuthContext from "../../Context/AuthContext/AuthContext";
+import Swal from "sweetalert2";
 export default function Register() {
   const {createUser} = useContext(AuthContext)
   const handleRegister = (e) => {
@@ -18,8 +19,11 @@ export default function Register() {
     createUser(email,password)
     .then(result=>{
       console.log(result.user)
+      if(result.user){
+        Swal.fire("Register Successfully!")
+      }
     })
-    .then(error=>{
+    .catch(error=>{
       console.log(error)
     })
   };

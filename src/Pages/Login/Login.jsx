@@ -2,6 +2,7 @@ import { useContext } from "react";
 import AuthContext from "../../Context/AuthContext/AuthContext";
 import Lottie from "lottie-react";
 import loginLottieData from "../../../public/registerLottie/loginLottee.json.json";
+import Swal from "sweetalert2";
 export default function Login() {
    const {signInUser} = useContext(AuthContext)
   const handleLogin = (e) => {
@@ -16,8 +17,11 @@ export default function Login() {
     signInUser(email,password)
     .then(result=>{
       console.log(result.user)
+      if(result.user){
+        Swal.fire("Login Successfully!")
+      }
     })
-    .then(error=>{
+    .catch(error=>{
       console.log(error)
     })
   };

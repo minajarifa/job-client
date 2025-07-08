@@ -1,10 +1,29 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import AuthContext from "../../../Context/AuthContext/AuthContext";
+import Swal from "sweetalert2";
+import navberIcons from "../../../../public/download.png"
+
 
 
 export default function Navber() {
-  const NavLink = <>
-  <Link to="/">Home</Link>
-  </>;
+  const { user, signOutUser } = useContext(AuthContext);
+  const handleSignInOut = () => {
+    signOutUser()
+      .then(() => {
+        Swal.fire("Logout successfully!")
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const NavLink = (
+    <>
+     <li> <Link to="/">Home</Link></li>
+     <li> <Link to="/">Home</Link></li>
+     <li> <Link to="/">Home</Link></li>
+    </>
+  );
   return (
     <div>
       {/*  */}
@@ -19,28 +38,27 @@ export default function Navber() {
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                {" "}
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
                   d="M4 6h16M4 12h8m-8 6h16"
-                />{" "}
+                />
               </svg>
             </div>
             <ul
               tabIndex={0}
               className="p-2 mt-3 shadow menu menu-sm dropdown-content bg-base-100 rounded-box z-1 w-52"
             >
-             {NavLink}
+              {NavLink}
             </ul>
           </div>
-          <a className="text-xl btn btn-ghost">daisyUI</a>
+          <a className="text-xl btn btn-ghost">
+            <img className="h-8 w-8 " src={navberIcons} alt="" />
+            Job Portal</a>
         </div>
         <div className="hidden navbar-center lg:flex">
-          <ul className="px-1 menu menu-horizontal">
-           {NavLink}
-          </ul>
+          <ul className="px-1 menu menu-horizontal">{NavLink}</ul>
         </div>
         <div className="navbar-end">
           {/* profile start */}
@@ -61,9 +79,20 @@ export default function Navber() {
               tabIndex={0}
               className="p-2 mt-3 shadow menu menu-sm dropdown-content bg-base-100 rounded-box z-1 w-52"
             >
-             <Link to="/register" className="mt-5 ml-5">Register</Link>
-             <Link to="/login" className="mt-5 ml-5">Login</Link>
-             <button>Logout</button>
+              {user ? (
+                <>
+                  <button onClick={handleSignInOut}>Logout</button>
+                </>
+              ) : (
+                <>
+                  <Link to="/register" className="mt-5 ml-5">
+                    Register
+                  </Link>
+                  <Link to="/login" className="mt-5 ml-5">
+                    Login
+                  </Link>
+                </>
+              )}
             </ul>
           </div>
           {/* profile end */}
