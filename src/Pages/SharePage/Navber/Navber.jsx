@@ -5,7 +5,6 @@ import Swal from "sweetalert2";
 import navberIcons from "../../../../public/download.png"
 
 
-
 export default function Navber() {
   const { user, signOutUser } = useContext(AuthContext);
   const handleSignInOut = () => {
