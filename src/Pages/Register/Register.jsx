@@ -3,6 +3,7 @@ import registerLottieData from "../../../public/registerLottie/lotte.json.json";
 import { useContext } from "react";
 import AuthContext from "../../Context/AuthContext/AuthContext";
 import Swal from "sweetalert2";
+import SocialLogi from "../SharePage/SocialLogin/SocialLogi";
 export default function Register() {
   const {createUser} = useContext(AuthContext)
   const handleRegister = (e) => {
@@ -76,8 +77,14 @@ export default function Register() {
               <button className="mt-4 btn btn-neutral">Register</button>
             </fieldset>
           </form>
+          <hr />
+        <div className="my-5 ml-5">
+            <SocialLogi></SocialLogi>
+        </div>
         </div>
       </div>
+      
+      
     </div>
   );
 }
