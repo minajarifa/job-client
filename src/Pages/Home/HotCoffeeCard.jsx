@@ -29,7 +29,7 @@ export default function HotCoffeeCard({ job }) {
         <div className="mt-10">
           <h4 className="text-2xl">{company}</h4>
           <p className="flex items-center gap-1">
-            <FaMapMarkerAlt />
+            <FaMapMarkerAlt/>
             {location}
           </p>
         </div>

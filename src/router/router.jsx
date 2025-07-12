@@ -1,25 +1,29 @@
-import {
-  createBrowserRouter, 
-} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Home from "../Pages/Home/Home";
 import App from "../App";
 import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import JobDetails from "../Pages/JobDetails/JobDetails";
+import PrivateRoute from "../Pages/PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
-     children: [
+    children: [
       {
         path: "/",
         element: <Home />,
       },
       {
         path: "/jobs/:id",
-        element: <JobDetails />,
-        loader:({params})=>fetch(`http://localhost:1000/jobs/${params.id}`)
+        element: (
+          <PrivateRoute>
+            <JobDetails />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:1000/jobs/${params.id}`),
       },
       {
         path: "/register",
@@ -32,4 +36,4 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-export default router
+export default router;

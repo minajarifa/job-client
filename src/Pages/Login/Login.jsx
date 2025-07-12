@@ -3,27 +3,34 @@ import AuthContext from "../../Context/AuthContext/AuthContext";
 import Lottie from "lottie-react";
 import loginLottieData from "../../../public/registerLottie/loginLottee.json.json";
 import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 export default function Login() {
-   const {signInUser} = useContext(AuthContext)
+  const { signInUser } = useContext(AuthContext);
+  const location = useLocation();
+  const from = location.state || "/";
+  const navigate = useNavigate();
+  console.log(location);
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
     // password validation
-    const userUnfo={
-        email, password
-    }
-    signInUser(email,password)
-    .then(result=>{
-      console.log(result.user)
-      if(result.user){
-        Swal.fire("Login Successfully!")
-      }
-    })
-    .catch(error=>{
-      console.log(error)
-    })
+    const userUnfo = {
+      email,
+      password,
+    };
+    signInUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        if (result.user) {
+          Swal.fire("Login Successfully!");
+          navigate(from);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <div className="min-h-screen hero bg-base-200">
