@@ -41,8 +41,8 @@ export default function HotCoffeeCard({ job }) {
         </h2>
         <p>{description}</p>
         <div className="flex items-center gap-2">
-          {requirements?.map((skill) => (
-            <p className="border rounded-md hover:text-blue-500 hover:bg-gray-400">
+          {requirements?.map((skill ,index) => (
+            <p key={index} className="border rounded-md hover:text-blue-500 hover:bg-gray-400">
               {skill}
             </p>
           ))}
