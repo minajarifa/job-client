@@ -22,8 +22,8 @@ export default function HotCoffeeCard({ job }) {
   } = job;
   return (
     <div className="shadow-sm card bg-base-100 ">
-      <div className="flex gap-2 m-2">
-        <figure className="px-10 pt-10">
+      <div className="flex items-center gap-2 m-2 ">
+        <figure className="px-10 pt-10 ">
           <img src={company_logo} alt="Shoes" className="w-12 rounded-xl" />
         </figure>
         <div className="mt-10">

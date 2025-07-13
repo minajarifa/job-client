@@ -5,8 +5,8 @@ export default function JobDetails() {
   const job = useLoaderData();
   console.log(job);
   return (
-    <div className="shadow-sm card bg-base-100 ">
-      <div className="flex gap-2 m-2">
+    <div className="my-10 border shadow-sm card bg-base-100">
+      <div className="flex justify-center gap-2 m-2">
         <figure className="px-10 pt-10">
           <img src={job.company_logo} alt="Shoes" className="w-12 rounded-xl" />
         </figure>
