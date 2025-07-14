@@ -1,11 +1,11 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import AuthContext from "../../Context/AuthContext/AuthContext";
 import Lottie from "lottie-react";
 import loginLottieData from "../../../public/registerLottie/loginLottee.json.json";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 export default function Login() {
-  const { signInUser } = useContext(AuthContext);
+  const { signInUser, user } = useContext(AuthContext);
   const location = useLocation();
   const from = location.state || "/";
   const navigate = useNavigate();
@@ -32,6 +32,12 @@ export default function Login() {
         console.log(error);
       });
   };
+  useEffect(() => {
+    if (user) {
+      return navigate("/");
+    }
+  }, []);
+
   return (
     <div className="min-h-screen hero bg-base-200">
       <div className="flex-col hero-content lg:flex-row-reverse">

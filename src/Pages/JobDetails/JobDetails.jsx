@@ -1,5 +1,5 @@
 import { FaMapMarkerAlt } from "react-icons/fa";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 export default function JobDetails() {
   const job = useLoaderData();
@@ -39,8 +39,9 @@ export default function JobDetails() {
             Salary: {job.salaryRange.min}-{job.salaryRange.max}
             {job.salaryRange.currency}
           </p>
-
-          <button className="btn btn-primary">Apply</button>
+          <Link to={`/JobApply/${job._id}`}>
+            <button className="btn btn-primary">Apply</button>
+          </Link>
         </div>
       </div>
     </div>

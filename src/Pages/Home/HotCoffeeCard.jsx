@@ -2,7 +2,7 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function HotCoffeeCard({ job }) {
-  console.log(job);
+  // console.log(job);
   const {
     applicationDeadline,
     category,

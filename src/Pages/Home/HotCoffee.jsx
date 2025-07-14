@@ -16,9 +16,7 @@ export default function HotCoffee() {
     <div className="my-10">
       <div className="grid lg:grid-cols-4 md:grid-cols-2">
         {jobs.map((job) => (
-          <HotCoffeeCard key={job._id} job={job}>
-            aru
-          </HotCoffeeCard>
+          <HotCoffeeCard key={job._id} job={job}></HotCoffeeCard>
         ))}
       </div>
     </div>
