@@ -19,7 +19,7 @@ export default function Navber() {
   const NavLink = (
     <>
      <li> <Link to="/">Home</Link></li>
-     <li> <Link to="/">Home</Link></li>
+     <li> <Link to="/My_Application_Jobs">My application jobs</Link></li>
      <li> <Link to="/">Home</Link></li>
     </>
   );
@@ -53,7 +53,7 @@ export default function Navber() {
             </ul>
           </div>
           <a className="text-xl btn btn-ghost">
-            <img className="h-8 w-8 " src={navberIcons} alt="" />
+            <img className="w-8 h-8 " src={navberIcons} alt="" />
             Job Portal</a>
         </div>
         <div className="hidden navbar-center lg:flex">
