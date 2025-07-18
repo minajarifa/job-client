@@ -20,7 +20,7 @@ export default function Navber() {
     <>
      <li> <Link to="/">Home</Link></li>
      <li> <Link to="/My_Application_Jobs">My application jobs</Link></li>
-     <li> <Link to="/">Home</Link></li>
+     <li> <Link to="/Add_Job">Add Job</Link></li>
     </>
   );
   return (
