@@ -1,15 +1,19 @@
-
-
 export default function AddJobs() {
-  const handleFormSubmitButton=(e)=>{
+  const handleFormSubmitButton = (e) => {
     e.preventDefault();
-    const formData= new FormData(e.target);
-    console.log(formData.entries());
-  }
+    // const formData = new FormData(e.target);
+    // const initialData = Object.fromEntries(formData.entries());
+    const formData = new FormData(e.target);
+    const initialData = Object.fromEntries(formData.entries());
+   
+  };
   return (
     <div className="my-10">
       <h1 className="text-3xl font-bold text-center">Post a new job</h1>
-      <form onSubmit={handleFormSubmitButton} className="shadow-2xl card bg-base-100 shrink-0">
+      <form
+        onSubmit={handleFormSubmitButton}
+        className="shadow-2xl card bg-base-100 shrink-0"
+      >
         <div className=" card-body">
           <fieldset className=" fieldset">
             {/* title */}
@@ -36,7 +40,7 @@ export default function AddJobs() {
             </div>
             {/* jobType */}
             <div className="">
-              <label className="label">jobType</label>
+              <label className="label">job Type</label>
               <select
                 type="text"
                 className="w-full input"
