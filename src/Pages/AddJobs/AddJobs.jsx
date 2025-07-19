@@ -1,11 +1,30 @@
+import Swal from "sweetalert2";
+import useAuth from "../../hook/useAuth";
+
 export default function AddJobs() {
+  const { user } = useAuth();
   const handleFormSubmitButton = (e) => {
     e.preventDefault();
-    // const formData = new FormData(e.target);
-    // const initialData = Object.fromEntries(formData.entries());
     const formData = new FormData(e.target);
     const initialData = Object.fromEntries(formData.entries());
-   
+    const { min, max, currency, ...newJob } = initialData;
+    newJob.salaryRange = { min, max, currency };
+    newJob.requirements = newJob.requirements.split(" ");
+    newJob.responsibilities = newJob.responsibilities.split(" ");
+    fetch("http://localhost:1000/jobs", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newJob),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire("Job post added successfully!");
+        }
+      });
   };
   return (
     <div className="my-10">
@@ -77,6 +96,17 @@ export default function AddJobs() {
                 <option value="Development">Development</option>
               </select>
             </div>
+            {/* requirements */}
+            <div className="">
+              <label className="label">requirements</label>
+              <input
+                type="text"
+                className="w-full input"
+                placeholder="requirements"
+                name="requirements"
+                required
+              />
+            </div>
             {/* applicationDeadline */}
             <div className="">
               <label className="label">application Deadline</label>
@@ -94,7 +124,7 @@ export default function AddJobs() {
               <div className="">
                 <label className="label">salary Range</label>
                 <input
-                  type="text"
+                  type="number"
                   className="w-full input"
                   placeholder="min"
                   name="min"
@@ -103,7 +133,7 @@ export default function AddJobs() {
               </div>
               <div className="">
                 <input
-                  type="text"
+                  type="number"
                   className="w-full input"
                   placeholder="max"
                   name="max"
@@ -171,6 +201,7 @@ export default function AddJobs() {
             <div className="">
               <label className="label">HR Email</label>
               <input
+                defaultValue={user?.email}
                 type="text"
                 className="w-full input"
                 placeholder="hr_email"
@@ -182,6 +213,7 @@ export default function AddJobs() {
             <div className="">
               <label className="label">HR Name</label>
               <input
+                defaultValue={user?.name}
                 type="text"
                 className="w-full input"
                 placeholder="hr_name"
@@ -194,7 +226,7 @@ export default function AddJobs() {
               <label className="label-text">Job Responsibilities</label>
               <textarea
                 className="w-full textarea textarea-bordered"
-                name="destription"
+                name="responsibilities"
                 placeholder="Wright each Responsibilities in a new line"
               ></textarea>
             </div>
