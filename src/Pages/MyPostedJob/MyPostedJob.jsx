@@ -33,7 +33,7 @@ export default function MyPostedJob() {
               {/* row 1 */}
               {jobs.map((job, index) => (
                 <tr key={job._id}>
-                  <th>{index}</th>
+                  <th>{index+1}</th>
                   <td>{job.title}</td>
                   <td>{job.applicationDeadline}</td>
                   <td>{job.applicationCount}</td>
