@@ -4,23 +4,23 @@ export default function ViewApplications() {
   const applications = useLoaderData();
   console.log(applications);
   const handleStatusUpdate = (e, id) => {
-    console.log(e.target.value);
-    const data = {
+    const status = {
       status: e.target.value,
     };
+    console.log(e.target.value);
     fetch(`http://localhost:1000/job-applications/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(status),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
       });
   };
-  
+
   return (
     <div>
       <h2>ViewApplications : {applications?.length}</h2>
