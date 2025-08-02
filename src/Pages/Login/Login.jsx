@@ -4,6 +4,7 @@ import Lottie from "lottie-react";
 import loginLottieData from "../../../public/registerLottie/loginLottee.json.json";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 export default function Login() {
   const { signInUser, user } = useContext(AuthContext);
   const location = useLocation();
@@ -24,6 +25,11 @@ export default function Login() {
       .then((result) => {
         console.log(result.user);
         if (result.user) {
+          const user={email:result.user.email}
+          axios.post(`http://localhost:1000/jwt`, user)
+          .then((data) => {
+            console.log(data);
+          });
           Swal.fire("Login Successfully!");
           navigate(from);
         }
