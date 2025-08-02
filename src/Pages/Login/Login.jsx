@@ -31,7 +31,7 @@ export default function Login() {
             console.log(data);
           });
           Swal.fire("Login Successfully!");
-          navigate(from);
+          // navigate(from);
         }
       })
       .catch((error) => {
