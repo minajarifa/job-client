@@ -27,8 +27,8 @@ export default function Login() {
         if (result.user) {
           const user={email:result.user.email}
           axios.post(`http://localhost:1000/jwt`, user)
-          .then((data) => {
-            console.log(data);
+          .then((res) => {
+            console.log(res.data);
           });
           Swal.fire("Login Successfully!");
           // navigate(from);
