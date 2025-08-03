@@ -26,7 +26,7 @@ export default function Login() {
         console.log(result.user);
         if (result.user) {
           const user={email:result.user.email}
-          axios.post(`http://localhost:1000/jwt`, user)
+          axios.post(`http://localhost:1000/jwt`, user,{withCredentials:true})
           .then((res) => {
             console.log(res.data);
           });
