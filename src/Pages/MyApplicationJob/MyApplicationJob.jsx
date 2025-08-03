@@ -2,33 +2,41 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hook/useAuth";
 import { AiFillDelete } from "react-icons/ai";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 export default function MyApplicationJob() {
   const { user } = useAuth();
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:1000/job-application?email=${user.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setJobs(data);
+    axios
+      .get(`http://localhost:1000/job-application?email=${user.email}`)
+      .then((res) => {
+       console.log( res.data);
+       setJobs(res?.data)
       });
+
+    // fetch(`http://localhost:1000/job-application?email=${user.email}`)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setJobs(data);
+    //   });
   }, [user?.email]);
   console.log(jobs);
-  const handleDeleteButton=(id)=>{
-    fetch(`http://localhost:1000/deleteApplication/${id}`,{
-      method:"DELETE",
-    headers:{
-      "content-type":"application/json"
-    }
+  const handleDeleteButton = (id) => {
+    fetch(`http://localhost:1000/deleteApplication/${id}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+      },
     })
-    .then(res=>res.json())
-    .then(data=>{
-      console.log(data)
-      if(data.deletedCount===1){
-        Swal.fire("Deleted successfully!");
-      }
-    })
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.deletedCount === 1) {
+          Swal.fire("Deleted successfully!");
+        }
+      });
+  };
   return (
     <div>
       MuApplicationJob {jobs.length}
@@ -83,8 +91,11 @@ export default function MyApplicationJob() {
                   </td>
                   <td>Details</td>
                   <th>
-                    <button onClick={()=>handleDeleteButton(job._id)} className="btn btn-ghost btn-xs">
-                       <AiFillDelete className="text-xl"/>
+                    <button
+                      onClick={() => handleDeleteButton(job._id)}
+                      className="btn btn-ghost btn-xs"
+                    >
+                      <AiFillDelete className="text-xl" />
                     </button>
                   </th>
                 </tr>
