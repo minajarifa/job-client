@@ -10,7 +10,7 @@ export default function MyApplicationJob() {
   useEffect(() => {
     axios
       .get(`http://localhost:1000/job-application?email=${user.email}`, {
-        withCredentials: true
+        withCredentials: true,
       })
       .then((res) => {
         console.log(res.data);
