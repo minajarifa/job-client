@@ -16,12 +16,6 @@ export default function MyApplicationJob() {
         console.log(res.data);
         setJobs(res?.data);
       });
-
-    // fetch(`http://localhost:1000/job-application?email=${user.email}`)
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     setJobs(data);
-    //   });
   }, [user?.email]);
   console.log(jobs);
   const handleDeleteButton = (id) => {
