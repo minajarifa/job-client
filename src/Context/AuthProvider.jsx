@@ -9,6 +9,7 @@ import {
   signOut,
 } from "firebase/auth";
 import auth from "../firebase/firebase.init";
+import axios from "axios";
 
 const gooleProvider = new GoogleAuthProvider();
 export default function AuthProvider({ children }) {
@@ -34,6 +35,13 @@ export default function AuthProvider({ children }) {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       console.log("currentuser=====>", currentUser);
+      if(currentUser?.email){
+        const user = {email:currentUser?.email}
+        axios.post('http://localhost:1000/jwt',user,{withCredentials:true})
+        .then(res=>{
+          console.log(res.data)
+        })
+      }
       setLoading(false);
     });
     return () => {
