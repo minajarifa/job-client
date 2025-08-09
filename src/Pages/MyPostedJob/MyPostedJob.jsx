@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../hook/useAuth";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function MyPostedJob() {
   const [jobs, setJobs] = useState([]);
   const { user } = useAuth();
   useEffect(() => {
-    fetch(`http://localhost:1000/jobs?email=${user.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setJobs(data);
+    axios.get(`http://localhost:1000/jobs?email=${user.email}`,{withCredentials:true})
+      .then((res) => {
+        setJobs(res.data);
       });
   }, []);
   console.log(jobs)
