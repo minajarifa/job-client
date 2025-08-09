@@ -23,24 +23,29 @@ export default function AuthProvider({ children }) {
     setLoading(false);
     return signInWithEmailAndPassword(auth, email, password);
   };
-  const signOutUser=()=>{
-    setLoading(true)
-  return  signOut(auth)
-  }
-  const googleLogin=()=>{
-    setLoading(true)
-    return signInWithPopup(auth ,gooleProvider)
-  }
+  const signOutUser = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
+  const googleLogin = () => {
+    setLoading(true);
+    return signInWithPopup(auth, gooleProvider);
+  };
   useState(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       console.log("currentuser=====>", currentUser);
-      if(currentUser?.email){
-        const user = {email:currentUser?.email}
-        axios.post('http://localhost:1000/jwt',user,{withCredentials:true})
-        .then(res=>{
-          console.log(res.data)
-        })
+      if (currentUser?.email) {
+        const user = { email: currentUser?.email };
+        axios
+          .post("http://localhost:1000/jwt", user, { withCredentials: true })
+          .then((res) => {
+            console.log(res.data);
+          });
+      } else {
+        axios
+          .post("http://localhost:1000/logout", {}, { withCredentials: true })
+          .then((res) => console.log("logout", res.data));
       }
       setLoading(false);
     });
