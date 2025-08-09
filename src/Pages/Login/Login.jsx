@@ -25,11 +25,6 @@ export default function Login() {
       .then((result) => {
         console.log(result.user);
         if (result.user) {
-          // const user={email:result.user.email}
-          // axios.post(`http://localhost:1000/jwt`, user,{withCredentials:true})
-          // .then((res) => {
-          //   console.log(res.data);
-          // });
           Swal.fire("Login Successfully!");
           navigate(from);
         }
