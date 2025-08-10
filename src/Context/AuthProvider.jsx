@@ -41,13 +41,16 @@ export default function AuthProvider({ children }) {
           .post("http://localhost:1000/jwt", user, { withCredentials: true })
           .then((res) => {
             console.log(res.data);
+            setLoading(false);
           });
       } else {
         axios
           .post("http://localhost:1000/logout", {}, { withCredentials: true })
-          .then((res) => console.log("logout", res.data));
+          .then((res) => {
+            console.log("logout", res.data);
+             setLoading(false);
+          });
       }
-      setLoading(false);
     });
     return () => {
       unsubscribe();

@@ -13,11 +13,11 @@ export default function MyApplicationJob() {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setJobs(res?.data);
       });
   }, [user?.email]);
-  console.log(jobs);
+  // console.log(jobs);
   const handleDeleteButton = (id) => {
     fetch(`http://localhost:1000/deleteApplication/${id}`, {
       method: "DELETE",
