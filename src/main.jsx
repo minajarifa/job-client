@@ -10,7 +10,7 @@ createRoot(document.getElementById("root")).render(
     <AuthProvider>
       <RouterProvider 
         router={router}
-        fallbackElement={<div>Loading...</div>}  // Add this fallback
+        fallbackElement={<div>Loading...</div>}  
       />
     </AuthProvider>
   </StrictMode>

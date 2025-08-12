@@ -35,7 +35,7 @@ export default function MyApplicationJob() {
   };
   return (
     <div>
-      MuApplicationJob {jobs.length}
+      MuApplicationJob {jobs?.length}
       <div>
         <div className="overflow-x-auto">
           <table className="table">
@@ -56,7 +56,7 @@ export default function MyApplicationJob() {
             <tbody>
               {/* row 1 */}
               {jobs.map((job) => (
-                <tr key={job._id}>
+                <tr key={job?._id}>
                   <th>
                     <label>
                       <input type="checkbox" className="checkbox" />
@@ -73,8 +73,10 @@ export default function MyApplicationJob() {
                         </div>
                       </div>
                       <div>
-                        <div className="font-bold">{job.title}</div>
-                        <div className="text-sm opacity-50">{job.location}</div>
+                        <div className="font-bold">{job?.title}</div>
+                        <div className="text-sm opacity-50">
+                          {job?.location}
+                        </div>
                       </div>
                     </div>
                   </td>
@@ -82,13 +84,13 @@ export default function MyApplicationJob() {
                     {job.company}
                     <br />
                     <span className="badge badge-ghost badge-sm">
-                      {job.jobType}
+                      {job?.jobType}
                     </span>
                   </td>
                   <td>Details</td>
                   <th>
                     <button
-                      onClick={() => handleDeleteButton(job._id)}
+                      onClick={() => handleDeleteButton(job?._id)}
                       className="btn btn-ghost btn-xs"
                     >
                       <AiFillDelete className="text-xl" />

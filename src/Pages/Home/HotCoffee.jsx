@@ -11,12 +11,12 @@ export default function HotCoffee() {
         setJobs(data);
       });
   }, []);
-  //   console.log(jobs);
+    console.log(jobs);
   return (
     <div className="my-10">
       <div className="grid lg:grid-cols-4 md:grid-cols-2">
         {jobs?.map((job) => (
-          <HotCoffeeCard key={job._id} job={job}></HotCoffeeCard>
+          <HotCoffeeCard key={job?._id} job={job}></HotCoffeeCard>
         ))}
       </div>
     </div>
