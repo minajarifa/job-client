@@ -32,7 +32,7 @@ const router = createBrowserRouter([
         path: "/My_Application_Jobs",
         element: (
           <PrivateRoute>
-            < MyApplicationJob/>
+            <MyApplicationJob />
           </PrivateRoute>
         ),
       },
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
         path: "/MyPostedJob",
         element: (
           <PrivateRoute>
-            < MyPostedJob/>
+            <MyPostedJob />
           </PrivateRoute>
         ),
       },
@@ -48,16 +48,17 @@ const router = createBrowserRouter([
         path: "/ViewApplications/:job_id",
         element: (
           <PrivateRoute>
-            < ViewApplications/>
+            <ViewApplications />
           </PrivateRoute>
         ),
-        loader:({params})=>fetch(`http://localhost:1000/job-applications/jobs/${params.job_id}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:1000/job-applications/jobs/${params.job_id}`),
       },
       {
         path: "/Add_Job",
         element: (
           <PrivateRoute>
-            < AddJobs/>
+            <AddJobs />
           </PrivateRoute>
         ),
       },
