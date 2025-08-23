@@ -4,10 +4,10 @@ import HotCoffeeCard from "./HotCoffeeCard";
 export default function HotCoffee() {
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:1000/jobs`)
+    fetch(`http://localhost:1000/jobs`,)
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data)
+        console.log(data)
         setJobs(data);
       });
   }, []);

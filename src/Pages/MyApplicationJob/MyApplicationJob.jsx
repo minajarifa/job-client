@@ -55,7 +55,7 @@ export default function MyApplicationJob() {
             </thead>
             <tbody>
               {/* row 1 */}
-              {jobs.map((job) => (
+              {jobs?.map((job) => (
                 <tr key={job?._id}>
                   <th>
                     <label>
