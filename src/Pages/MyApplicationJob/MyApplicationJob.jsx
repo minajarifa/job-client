@@ -17,7 +17,7 @@ export default function MyApplicationJob() {
         setJobs(res?.data);
       });
   }, [user?.email]);
-  // console.log(jobs);
+  console.log(jobs);
   const handleDeleteButton = (id) => {
     fetch(`http://localhost:1000/deleteApplication/${id}`, {
       method: "DELETE",
