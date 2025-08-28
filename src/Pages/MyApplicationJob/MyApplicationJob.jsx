@@ -9,11 +9,11 @@ export default function MyApplicationJob() {
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:1000/job-application?email=${user?.email}`, {
-        withCredentials: true,
-      })
+      .get(`http://localhost:1000/job-application?email=${user?.email}`, 
+       
+    )
       .then((res) => {
-        // console.log(res.data);
+        // console.log(res.data)
         setJobs(res?.data);
       });
   }, [user?.email]);
