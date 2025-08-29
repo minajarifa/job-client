@@ -9,12 +9,6 @@ export default function HotCoffee() {
       console.log(res.data);
       setJobs(res.data);
     });
-    // fetch(`http://localhost:1000/jobs`,)
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data)
-    //     setJobs(data);
-    //   });
   }, []);
   console.log(jobs);
   return (

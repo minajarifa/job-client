@@ -1,11 +1,12 @@
 import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../hook/useAuth";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 export default function JobApply() {
   const { id } = useParams();
   const { user } = useAuth();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   console.log(user);
   const submitjobApplication = (e) => {
     e.preventDefault();
@@ -21,21 +22,26 @@ export default function JobApply() {
       Resume,
     };
     console.log(jobApplication);
-    fetch('http://localhost:1000/job-application',{
-      method:'POST',
-      headers:{
-        "content-type":"application/json"
-      },
-      body:JSON.stringify(jobApplication)
-    })
-    .then(res=>res.json())
-    .then(data=>{
-      console.log(data)
-      if(data.insertedId){
-        Swal.fire("Jobs application added successfully!");
-        navigate('/My_Application_Jobs')
-      }
-    })
+    axios
+      .post(`http://localhost:1000/job-application`, { withCredentials: true })
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.insertedId) {
+          Swal.fire("Jobs application added successfully!");
+          navigate("/My_Application_Jobs");
+        }
+      });
+    // fetch('http://localhost:1000/job-application',{
+    //   method:'POST',
+    //   headers:{
+    //     "content-type":"application/json"
+    //   },
+    //   body:JSON.stringify(jobApplication)
+    // })
+    // .then(res=>res.json())
+    // .then(data=>{
+
+    // })
   };
   return (
     <div className="flex-col hero-content lg:flex-row-reverse">
