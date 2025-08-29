@@ -9,7 +9,7 @@ export default function MyApplicationJob() {
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:1000/job-application?email=${user?.email}`,{withCredentials:true} 
+      .get(`https://sob-server.vercel.app/job-application?email=${user?.email}`,{withCredentials:true} 
        
     )
       .then((res) => {
@@ -19,7 +19,7 @@ export default function MyApplicationJob() {
   }, [user?.email]);
   console.log(jobs);
   const handleDeleteButton = (id) => {
-    fetch(`http://localhost:1000/deleteApplication/${id}`, {
+    fetch(`https://sob-server.vercel.app/deleteApplication/${id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",

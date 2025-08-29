@@ -52,7 +52,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:1000/job-applications/jobs/${params.job_id}`),
+          fetch(`https://sob-server.vercel.app/job-applications/jobs/${params.job_id}`),
       },
       {
         path: "/Add_Job",
@@ -70,7 +70,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:1000/jobs/${params.id}`),
+          fetch(`https://sob-server.vercel.app/jobs/${params.id}`),
       },
       {
         path: "/register",

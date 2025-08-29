@@ -23,7 +23,7 @@ export default function JobApply() {
     };
     console.log(jobApplication);
     axios
-      .post(`http://localhost:1000/job-application`, { withCredentials: true })
+      .post(`https://sob-server.vercel.app/job-application`, { withCredentials: true })
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
@@ -31,7 +31,7 @@ export default function JobApply() {
           navigate("/My_Application_Jobs");
         }
       });
-    // fetch('http://localhost:1000/job-application',{
+    // fetch('https://sob-server.vercel.app/job-application',{
     //   method:'POST',
     //   headers:{
     //     "content-type":"application/json"

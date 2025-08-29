@@ -8,7 +8,7 @@ export default function ViewApplications() {
       status: e.target.value,
     };
     console.log(e.target.value);
-    fetch(`http://localhost:1000/job-applications/${id}`, {
+    fetch(`https://sob-server.vercel.app/job-applications/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

@@ -5,7 +5,7 @@ import axios from "axios";
 export default function HotCoffee() {
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:1000/jobs`,{withCredentials:true}).then((res) => {
+    axios.get(`https://sob-server.vercel.app/jobs`,{withCredentials:true}).then((res) => {
       console.log(res.data);
       setJobs(res.data);
     });

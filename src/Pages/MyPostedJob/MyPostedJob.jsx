@@ -7,7 +7,7 @@ export default function MyPostedJob() {
   const [jobs, setJobs] = useState([]);
   const { user } = useAuth();
   useEffect(() => {
-    axios.get(`http://localhost:1000/jobs?email=${user.email}`,{withCredentials:true})
+    axios.get(`https://sob-server.vercel.app/jobs?email=${user.email}`,{withCredentials:true})
       .then((res) => {
         setJobs(res.data);
       });

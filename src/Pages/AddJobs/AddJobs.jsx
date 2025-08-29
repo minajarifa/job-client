@@ -11,7 +11,7 @@ export default function AddJobs() {
     newJob.salaryRange = { min, max, currency };
     newJob.requirements = newJob.requirements.split(" ");
     newJob.responsibilities = newJob.responsibilities.split(" ");
-    fetch("http://localhost:1000/jobs", {
+    fetch("https://sob-server.vercel.app/jobs", {
       method: "POST",
       headers: {
         "content-type": "application/json",
